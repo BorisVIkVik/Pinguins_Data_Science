@@ -5,3 +5,6 @@ pandas
 scikit-learn
 pyyaml
 seaborn
+fastapi[standard]
+uvicorn
+
