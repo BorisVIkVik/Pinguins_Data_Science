@@ -11,8 +11,8 @@ import sys
 import time
 import traceback
 import yaml
-
-from logger import Logger
+import numpy as np
+from test_logger import Logger
 
 SHOW_LOG = True
 
@@ -63,7 +63,17 @@ class Predictor():
         except FileNotFoundError:
             self.log.error(traceback.format_exc())
             sys.exit(1)
-        return classifier.predict(data)
+        tmp = [np.array([i for i in data.__dict__.values()], dtype=np.float32)]
+        # data_tmp = {
+        #     "Culmen Length (mm)": data.Culmen_Length,
+        #     "Culmen Depth (mm)": data.Culmen_Depth,
+        #     "Flipper Length (mm)": data.Flipper_Length,
+        #     "Body Mass (g)": data.Body_Mass,
+        #     "Delta 15 N (o/oo)": data.Delta15N,
+        #     "Delta 13 C (o/oo)": data.Delta13C
+        # }	
+        print(classifier.predict(tmp))
+        return {'data': classifier.predict(tmp)[0]}
 
     def predict(self) -> bool:
         args = self.parser.parse_args()
@@ -91,7 +101,6 @@ class Predictor():
                         data = json.load(f)
                         X = self.sc.transform(
                             pd.json_normalize(data, record_path=['X']))
-                        print('sadsadasdas', X)
                         y = pd.json_normalize(data, record_path=['y'])
                         score = classifier.score(X, y)
                         print(f'{args.model} has {score} score')
