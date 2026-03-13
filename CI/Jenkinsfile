@@ -13,6 +13,28 @@ pipeline {
                 sh 'cd Pinguins_Data_Science && ls'
 				}
 			}
+        stage('Login'){
+            steps{
+                sh 'docker login -u %DOCKERHUB_CREDS_USR% -p %DOCKERHUB_CREDS_PSW%'
+                }
+            }
+
+        stage('Create and run docker container') {
+            steps {
+                script {
+                    try {
+                        sh 'cd Pinguins_Data_Science && docker compose build'
+                        }
+
+                    finally {
+                    sh '''
+                        cd Pinguins_Data_Science
+                        docker compose up -d
+                        '''
+                        }
+				    }
+                }
+            }
     }
 
 }
