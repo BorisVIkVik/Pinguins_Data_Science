@@ -1,16 +1,18 @@
 pipeline {
-    agent {
-    docker {
-        alwaysPull true
-        image 'borisvikvik/borisvikvik-penguins-data-science'
+    agent any
+    stages {
+        stage('Clone github repository') {
+            steps {
+                cleanWs()
+                bat 'chcp 65001 && git clone -b main https://github.com/IcyAltair/mle-template.git'
+				}
+			}
+
+        stage('Checkout repo dir') {
+            steps {
+                bat 'chcp 65001 && cd mle-template && dir'
+				}
+			}
     }
 
-    }
-    stages {
-            stage('build') {
-                steps {
-                    sh 'python --version'
-                }
-            }
-    }
 }
