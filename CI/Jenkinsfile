@@ -3,7 +3,6 @@ pipeline {
     docker {
         alwaysPull true
         image 'borisvikvik/borisvikvik-penguins-data-science'
-        label 'latest'
     }
 
     }
