@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Clone github repository') {
             steps {
-                cleanWs()
-                bat 'chcp 65001 && git clone -b main https://github.com/IcyAltair/mle-template.git'
+                // cleanWs()
+                sh 'git clone -b main https://github.com/BorisVIkVik/Pinguins_Data_Science'
 				}
 			}
 
         stage('Checkout repo dir') {
             steps {
-                bat 'chcp 65001 && cd mle-template && dir'
+                sh 'cd Pinguins_Data_Science && ls'
 				}
 			}
     }
