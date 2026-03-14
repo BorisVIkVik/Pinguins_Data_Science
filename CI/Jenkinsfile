@@ -24,7 +24,7 @@ pipeline {
 			}
         stage('Login'){
             steps{
-                sh 'source .env'
+                // sh 'source .env'
                 sh 'docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
                 }
             }
