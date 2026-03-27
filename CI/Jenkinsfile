@@ -17,6 +17,7 @@ pipeline {
                         echo "Directory $DIR does not exist."
                         git clone -b main https://github.com/BorisVIkVik/Pinguins_Data_Science
                     fi
+                    dvc pull
                 '''
 				}
 			}
