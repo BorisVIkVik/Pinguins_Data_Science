@@ -18,7 +18,8 @@ pipeline{
         }
         stage('Run container'){
             steps{
-                sh 'docker run --name penguins-data-science -p 8080:5556'
+                sh 'docker compose up'
+                // sh 'docker run --name penguins-data-science -p 8080:5556'
             }
         }
     }
