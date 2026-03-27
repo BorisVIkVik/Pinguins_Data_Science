@@ -1,4 +1,5 @@
 pipeline{
+    agent any
     environment{
         PATH = "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:$PATH"
         DOCKERHUB_CREDS = credentials('Penguins-data-science')
