@@ -13,7 +13,25 @@ class PinguinSchema(BaseModel):
     Delta13C: int 
  
 # условная база данных - набор объектов Person
+import psycopg2
+#asdas
+conn =psycopg2.connect(
+    dbname='penguinsDB',
+    user='myuser',
+    password='mypassword',
+    host='db',
+    port='5432'
+)
 
+cur = conn.cursor()
+
+cur.execute("""
+    CREATE TABLE IF NOT EXISTS predict_results_test (
+        id SERIAL PRIMARY KEY,
+        result VARCHAR(50)
+    );
+""")
+conn.commit()
  
 app = FastAPI()
  
@@ -26,4 +44,10 @@ async def main():
 def get_person(model, pinguin: Annotated[PinguinSchema, Form()]):
     predictor = Predictor()
     # tmp = 
-    return predictor.predict_api(model,pinguin)
+    result = predictor.predict_api(model,pinguin)
+    cur.execute(
+        "INSERT INTO predict_results_test (result) VALUES (%s)",
+        (result['data'],)
+    )
+    conn.commit()
+    return result
