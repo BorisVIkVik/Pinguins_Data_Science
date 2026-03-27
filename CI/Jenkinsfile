@@ -49,6 +49,18 @@ pipeline {
 				    }
                 }
             }
+        stage('Push')
+        {
+            steps{
+                sh 'docker push borisvikvik/pinguin-data-scin:latest'
+            }
+        }
+        
+    }
+    post{
+        always{
+            sh 'docker logout'
+        }
     }
 
 }
