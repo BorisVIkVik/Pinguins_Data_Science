@@ -19,6 +19,7 @@ pipeline {
                     fi
                     dvc pull
                 '''
+                // sh 'cd Pinguins_Data_Science && dvcpull'
 				}
 			}
 
