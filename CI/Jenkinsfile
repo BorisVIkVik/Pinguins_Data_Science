@@ -18,7 +18,7 @@ pipeline {
                         git clone -b main https://github.com/BorisVIkVik/Pinguins_Data_Science
                     fi
                 '''
-                sh 'cd Pinguins_Data_Science && git lfs install && git lfs pull && dvc pull'
+                sh 'cd Pinguins_Data_Science && cat .dvc/config && git lfs install && git lfs pull && dvc pull'
 				}
 			}
 
