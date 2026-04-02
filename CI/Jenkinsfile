@@ -18,7 +18,7 @@ pipeline {
                         git clone -b main https://github.com/BorisVIkVik/Pinguins_Data_Science
                     fi
                 '''
-                // sh 'cd Pinguins_Data_Science && dvcpull'
+                sh 'cd Pinguins_Data_Science && dvc pull'
 				}
 			}
 
