@@ -1,4 +1,4 @@
 [core]
     remote = lfs-storage
 ['remote "lfs-storage"']
-    url = ../git@github.com:BorisVIkVik/Pinguins_Data_Science.git
+    url = git@github.com:BorisVIkVik/Pinguins_Data_Science.git
