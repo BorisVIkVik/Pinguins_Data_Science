@@ -19,8 +19,7 @@ pipeline {
                 //         git clone -b main https://github.com/BorisVIkVik/Pinguins_Data_Science
                 //     fi
                 // '''
-                sh '''cd Pinguins_Data_Science
-                      cat .dvc/config
+                sh '''cat .dvc/config
                       git lfs install
                       git lfs pull
                       dvc pull'''
@@ -29,7 +28,7 @@ pipeline {
 
         stage('Checkout repo dir') {
             steps {
-                sh 'cd Pinguins_Data_Science && ls'
+                sh 'ls'
 				}
 			}
         stage('Login'){
@@ -43,12 +42,11 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'cd Pinguins_Data_Science && docker compose build'
+                        sh 'docker compose build'
                         }
 
                     finally {
                     sh '''
-                        cd Pinguins_Data_Science
                         docker compose up -d
                         '''
                         }
