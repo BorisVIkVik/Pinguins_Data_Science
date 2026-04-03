@@ -10,6 +10,7 @@ pipeline {
                 // cleanWs()
                 
                 sh '''
+                    pwd
                     DIR="./Pinguins_Data_Science"
                     if [[ -d "$DIR" ]]; then
                         echo "Directory $DIR exists."
