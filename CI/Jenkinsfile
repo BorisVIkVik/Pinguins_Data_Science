@@ -54,7 +54,7 @@ pipeline {
         stage('Push')
         {
             steps{
-                sh 'docker push borisvikvik/borisvikvik-penguins-data-science:1lab'
+                sh 'docker push borisvikvik/borisvikvik-penguins-data-science:latest'
             }
         }
         

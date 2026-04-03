@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Pull image'){
             steps{
-                sh 'docker pull borisvikvik/borisvikvik-penguins-data-science:1lab'
+                sh 'docker pull borisvikvik/borisvikvik-penguins-data-science'
             }
         }
         stage('Run container'){
