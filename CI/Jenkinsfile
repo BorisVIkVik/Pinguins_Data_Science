@@ -20,8 +20,6 @@ pipeline {
                 //     fi
                 // '''
                 sh '''cat .dvc/config
-                      git lfs install
-                      git lfs pull
                       dvc pull'''
 				}
 			}
