@@ -18,7 +18,7 @@ pipeline{
         }
         stage('Run container'){
             steps{
-                sh 'docker compose up'
+                sh 'docker compose up -d'
                 sh 'sleep 30 && docker compose down'
                 // sh 'docker run --name penguins-data-science -p 8080:5556'
             }
